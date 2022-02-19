@@ -1,0 +1,13 @@
+{% extends 'hote_layout.html.twig' %}
+
+{% block title %}Créer un nouveau logement{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau logement</h1>
+
+    {{ include('hote/logement/_form.html.twig') }}
+
+    <a class="btn btn-behance mt-2" href="{{ path('logement_index') }}"><i class="mdi mdi-arrow-left"></i> Retour</a>
+
+
+{% endblock %}
