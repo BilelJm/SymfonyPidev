@@ -6,7 +6,9 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity("email",
@@ -65,6 +67,16 @@ class User implements UserInterface
      * @Assert\EqualTo(propertyPath ="password", message="Le mot de passe n'est pas identique")
      */
     public $confirm_pwd;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Logement::class, mappedBy="hote")
+     */
+    private $logements;
+
+    public function __construct()
+    {
+        $this->logements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,4 +182,35 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+        /**
+     * @return Collection|Logement[]
+     */
+    public function getLogements(): Collection
+    {
+        return $this->logements;
+    }
+
+    public function addLogement(Logement $logement): self
+    {
+        if (!$this->logements->contains($logement)) {
+            $this->logements[] = $logement;
+            $logement->setHote($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogement(Logement $logement): self
+    {
+        if ($this->logements->removeElement($logement)) {
+            // set the owning side to null (unless already changed)
+            if ($logement->getHote() === $this) {
+                $logement->setHote(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

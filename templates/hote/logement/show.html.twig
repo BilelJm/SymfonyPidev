@@ -1,0 +1,44 @@
+{% extends 'hote_layout.html.twig' %}
+
+{% block title %}Logement{% endblock %}
+
+{% block body %}
+    <h1>Logement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ logement.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ logement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ logement.description }}</td>
+            </tr>
+            <tr>
+                <th>Addresse</th>
+                <td>{{ logement.addresse }}</td>
+            </tr>
+            <tr>
+                <th>Equipement</th>
+
+                <td>
+                    {% for equipment in logement.equipements %}
+                        {{ equipment.nom }} /
+                    {% endfor %}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-behance mt-2" href="{{ path('logement_index') }}"><i class="mdi mdi-arrow-left"></i> Retour</a>
+
+    <a  class="btn btn-warning mt-2" href="{{ path('logement_edit', {'id': logement.id}) }}"> <i class="mdi mdi-tooltip-edit"> </i> Modifier</a>
+
+    {{ include('hote/logement/_delete_form.html.twig') }}
+{% endblock %}
