@@ -1,0 +1,11 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}New OptionGuide{% endblock %}
+
+{% block body %}
+    <h1>Create new OptionGuide</h1>
+
+    {{ include('option_guide/_form.html.twig') }}
+
+    <a href="{{ path('option_guide_index') }}">back to list</a>
+{% endblock %}

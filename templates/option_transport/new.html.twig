@@ -1,0 +1,11 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}New OptionTransport{% endblock %}
+
+{% block body %}
+    <h1>Create new OptionTransport</h1>
+
+    {{ include('option_transport/_form.html.twig') }}
+
+    <a href="{{ path('option_transport_index') }}">back to list</a>
+{% endblock %}

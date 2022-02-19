@@ -1,0 +1,39 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}OptionGuide index{% endblock %}
+
+{% block body %}
+    <h1>OptionGuide index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for option_guide in option_guides %}
+            <tr>
+                <td>{{ option_guide.id }}</td>
+                <td>{{ option_guide.Nom }}</td>
+                <td>{{ option_guide.Prenom }}</td>
+                <td>{{ option_guide.Tel }}</td>
+                <td>
+                    <a href="{{ path('option_guide_show', {'id': option_guide.id}) }}">show</a>
+                    <a href="{{ path('option_guide_edit', {'id': option_guide.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('option_guide_new') }}">Create new</a>
+{% endblock %}

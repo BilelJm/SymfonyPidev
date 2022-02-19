@@ -1,0 +1,64 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}Programme index{% endblock %}
+
+{% block body %}
+    <h1>Programme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>Adresse</th>
+                <th>Category</th>
+                <th>Statut</th>
+                <th>Guide</th>
+                <th>Transport</th>
+                <th>Image1</th>
+                <th>Image2</th>
+                <th>Image3</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programme in programmes %}
+            <tr>
+                <td>{{ programme.id }}</td>
+                <td>{{ programme.Titre }}</td>
+                <td>{{ programme.Description }}</td>
+                <td>{{ programme.prix }}</td>
+                <td>{{ programme.date ? programme.date|date('Y-m-d') : '' }}</td>
+                <td>{{ programme.adresse }}</td>
+                <td>{{ programme.category }}</td>
+                <td>{{ programme.statut }}</td>
+                <td>{{ programme.Guide }}</td>
+                <td>{{ programme.transport }}</td>
+                <td>
+                <img src="{{ programme.image.getFile() }}">
+                </td>
+                <td>
+                    <img src="{{ programme.image2.getFile() }}">
+                </td>
+                <td>
+                    <img src="'{{ programme.image3.getFile() }}">
+                </td>
+                <td>
+                    <a href="{{ path('programme_show', {'id': programme.id}) }}">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('programme_edit', {'id': programme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('programme_new') }}">Create new</a>
+{% endblock %}
