@@ -29,7 +29,7 @@
                                 <tr>
                                 <td>{{ logement.id }}</td>
                                 <td>{{ logement.titre }}</td>
-                                <td>{{ logement.description }}</td>
+                                <td>{{ logement.description|length > 50 ? logement.description|slice(0, 50) ~ '...' :  logement.descriptio  }}</td>
                                 <td>{{ logement.addresse }}</td>
                                 <td>
                                     {% for equipment in logement.equipements %}
