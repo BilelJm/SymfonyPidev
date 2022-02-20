@@ -1,0 +1,96 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <title>Login 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
+
+</head>
+<body class="img js-fullheight" style="background-image: url({{ asset('admin/images/bg.jpg') }});">
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">Login #10</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <h3 class="mb-4 text-center">Have an account?</h3>
+
+
+                    {% block title %}Log in!{% endblock %}
+
+                    {% block body %}
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+
+                            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+
+                            {#
+                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                            See https://symfony.com/doc/current/security/remember_me.html
+
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" name="_remember_me"> Remember me
+                                </label>
+                            </div>
+                            #}
+
+                            <div class="form-group mt-3">
+                                <button class="form-control btn btn-primary submit px-3" type="submit">
+                                    Sign in
+                                </button>
+                            </div>
+                        </form>
+                    {% endblock %}
+
+                    <div class="w-50 text-md-right">
+                        <a href="#" style="color: #fff">Forgot Password</a>
+                    </div>
+                </div>
+                </form>
+                <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                <div class="social d-flex text-center">
+                    <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+                    <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/js/popper.js') }}"></script>
+<script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/js/main.j') }}s"></script>
+
+</body>
+</html>
+
+

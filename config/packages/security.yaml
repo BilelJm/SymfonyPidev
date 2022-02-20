@@ -16,6 +16,19 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        admin:
+            pattern: ^/admin
+            anonymous: true
+            provider: users_in_memory
+            guard:
+                authenticators:
+                    - App\Security\AdminAuthAuthenticator
+            logout:
+                path: aplogout
+                # where to redirect after logout
+                target: aplogin
+
         main:
             anonymous: lazy
             provider: users_in_memory
@@ -23,6 +36,7 @@ security:
             guard:
                 authenticators:
                     - App\Security\UserAuthAuthenticator
+                entry_point: App\Security\UserAuthAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -36,5 +50,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
