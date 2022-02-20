@@ -6,6 +6,7 @@ use App\Entity\OptionTransport;
 use App\Form\OptionTransportType;
 use App\Repository\OptionTransportRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,7 @@ class OptionTransportController extends AbstractController
     {
         $optionTransport = new OptionTransport();
         $form = $this->createForm(OptionTransportType::class, $optionTransport);
+        $form->add("Enregistrer", SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -64,6 +66,7 @@ class OptionTransportController extends AbstractController
     public function edit(Request $request, OptionTransport $optionTransport, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(OptionTransportType::class, $optionTransport);
+        $form->add("Modifier", SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

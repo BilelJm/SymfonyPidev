@@ -23,6 +23,10 @@ class Category
     /**
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
+     *  *  * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Le titre ne doit pas contenir un chiffre")
      */
     private $Titre;
 

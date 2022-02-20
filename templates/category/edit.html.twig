@@ -1,13 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'back-officenewprog.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Modifier Categorie{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
+    <h1>Modifier Categorie</h1>
+<div class="card col-lg-15 mx-auto">
+    <div class="card-body px-50 py-50">
 
-    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
 
-    <a href="{{ path('category_index') }}">back to list</a>
+    <div class="form-group">
+        {{ form_label(form.Titre) }}
+        {{ form_errors(form.Titre)  }}
+        {{ form_widget(form.Titre, {'attr':{'class':'form-control p_input'}}) }}
+    </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+    <a class="btn btn-success" href="{{ path('category_index') }}">Retourner a la liste</a>
 
     {{ include('category/_delete_form.html.twig') }}
 {% endblock %}

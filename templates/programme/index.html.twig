@@ -1,9 +1,9 @@
 {% extends 'back-officenewprog.html.twig' %}
 
-{% block title %}Programme index{% endblock %}
+{% block title %}Liste des progrmmes{% endblock %}
 
 {% block body %}
-    <h1>Programme index</h1>
+    <h1>Liste des programmes</h1>
 
     <table class="table">
         <thead>
@@ -45,20 +45,21 @@
                 <td>
                     <img src="'{{ programme.image3.getFile() }}">
                 </td>
+
                 <td>
-                    <a href="{{ path('programme_show', {'id': programme.id}) }}">show</a>
+                    <a class="btn btn-behance mt-2" href="{{ path('programme_show', {'id': programme.id}) }}">Afficher</a>
                 </td>
                 <td>
-                    <a href="{{ path('programme_edit', {'id': programme.id}) }}">edit</a>
+                    <a class="btn btn-behance mt-2" href="{{ path('programme_edit', {'id': programme.id}) }}"> Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">La liste est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('programme_new') }}">Create new</a>
+    <a class= "btn btn-success" class="btn btn-success " href="{{ path('programme_new') }}">Nouveau</a>
 {% endblock %}

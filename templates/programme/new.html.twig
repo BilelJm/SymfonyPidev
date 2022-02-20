@@ -1,11 +1,11 @@
 {% extends 'back-officenewprog.html.twig' %}
 
-{% block title %}New Programme{% endblock %}
+{% block title %}Nouveau programme{% endblock %}
 
 {% block body %}
 
 
-
+<h1>Nouveau programme</h1>
     <div class="card col-lg-15 mx-auto">
         <div class="card-body px-50 py-50">
 
@@ -90,6 +90,6 @@
 
 
 
-
+    <a class= "btn btn-success" href="{{ path('programme_index') }}">Retourner a la liste</a>
 
 {% endblock %}

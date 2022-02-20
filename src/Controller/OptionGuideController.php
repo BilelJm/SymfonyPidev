@@ -6,6 +6,7 @@ use App\Entity\OptionGuide;
 use App\Form\OptionGuideType;
 use App\Repository\OptionGuideRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,7 @@ class OptionGuideController extends AbstractController
     {
         $optionGuide = new OptionGuide();
         $form = $this->createForm(OptionGuideType::class, $optionGuide);
+        $form->add("Enregistrer", SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -64,6 +66,7 @@ class OptionGuideController extends AbstractController
     public function edit(Request $request, OptionGuide $optionGuide, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(OptionGuideType::class, $optionGuide);
+        $form->add("Modifier", SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

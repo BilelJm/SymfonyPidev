@@ -21,19 +21,32 @@ class OptionGuide
     private $id;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank (message="le nom du guide est obligatoire")
      * @ORM\Column(type="string", length=255)
+     *  *  * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Le titre ne doit pas contenir un chiffre")
      */
     private $Nom;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank (message="le prenom du guide est obligatoire")
      * @ORM\Column(type="string", length=255)
+     *  *  * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Le titre ne doit pas contenir un chiffre")
      */
     private $Prenom;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank (message="le prenom du guide est obligatoire")
+    @Assert\Length(min = 8, max =8, minMessage = "le numéro de telephne doit contenir 8 chiffres",
+     * maxMessage = "le numéro de telephne doit contenir 8 chiffres")
+    @Assert\Regex(pattern="/^[0-9]*$/", message="chiffres seulement")
+     *
      */
     private $Tel;
 

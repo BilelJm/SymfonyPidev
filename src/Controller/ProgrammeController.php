@@ -72,6 +72,7 @@ class ProgrammeController extends AbstractController
     public function edit(Request $request, Programme $programme, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProgrammeType::class, $programme);
+        $form->add("Modifier", SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

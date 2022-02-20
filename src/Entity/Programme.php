@@ -51,18 +51,27 @@ class Programme
      * @ORM\Column(type="float")
      * @Assert\NotBlank (message="le prix est obligatoire")
      * @Assert\Range (min=10 , max=100 , notInRangeMessage = "Le prix doit etre entre {{ min }} et {{ max }} dt ",)
+     * @Assert\Positive
      */
     private $prix;
 
     /**
      *  * @Assert\NotBlank (message="la date est obligatoire")
      * @ORM\Column(type="date")
+
+
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank (message="l'adresse est obligatoire")
+     *  @Assert\Length(
+     *      min = 10,
+     *      max = 20,
+     *       minMessage = "La adresse doit contenir au moins {{ limit }} caractéres",
+     *      maxMessage = "La description doit contenir au plus {{ limit }} characters"
+     * )
      */
     private $adresse;
 
@@ -81,16 +90,35 @@ class Programme
     /**
      * @Assert\NotBlank (message="l'image est obligatoire")
      * @ORM\ManyToOne(targetEntity=Image::class, inversedBy="programme",cascade={"persist"})
+     * * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
      */
     private $image;
     /**
      * @Assert\NotBlank (message="l'image est obligatoire")
      * @ORM\ManyToOne(targetEntity=Image::class, inversedBy="programme" , cascade={"persist"})
+     * * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
      */
     private $image2;
+
     /**
      * @Assert\NotBlank (message="l'image est obligatoire")
      * @ORM\ManyToOne(targetEntity=Image::class, inversedBy="programme",cascade={"persist"})
+     * * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
      */
     private $image3;
 

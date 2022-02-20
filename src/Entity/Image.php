@@ -26,6 +26,11 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"application/jpg", "application/png"},
+     *     mimeTypesMessage = "Please upload a valid PDF"
+     * )
      */
     private $file;
 

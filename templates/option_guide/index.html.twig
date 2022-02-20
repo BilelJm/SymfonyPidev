@@ -3,7 +3,7 @@
 {% block title %}OptionGuide index{% endblock %}
 
 {% block body %}
-    <h1>OptionGuide index</h1>
+    <h1>Liste Des Guides</h1>
 
     <table class="table">
         <thead>
@@ -12,7 +12,6 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Tel</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +22,18 @@
                 <td>{{ option_guide.Prenom }}</td>
                 <td>{{ option_guide.Tel }}</td>
                 <td>
-                    <a href="{{ path('option_guide_show', {'id': option_guide.id}) }}">show</a>
-                    <a href="{{ path('option_guide_edit', {'id': option_guide.id}) }}">edit</a>
+                    <a class="btn btn-behance mt-2" href="{{ path('option_guide_show', {'id': option_guide.id}) }}">Afficher</a>
+
+                    <a class="btn btn-behance mt-2" href="{{ path('option_guide_edit', {'id': option_guide.id}) }}"> Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Liste vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('option_guide_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('option_guide_new') }}">Nouveau</a>
 {% endblock %}
