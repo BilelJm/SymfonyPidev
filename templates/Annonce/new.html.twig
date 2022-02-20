@@ -1,0 +1,66 @@
+{% extends 'back_annone.html.twig' %}
+
+{% block title %}New Annonce{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="card col-lg-15 mx-auto">
+    <div class="card-body px-50 py-50">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.titre) }}
+                {{ form_errors(form.titre)  }}
+                {{ form_widget(form.titre , {'attr':{'class':'form-control p_input'}}) }}
+
+            </div>
+
+
+            <div class="form-group">
+                {{ form_label(form.date_cr) }}
+                {{ form_errors(form.date_cr)  }}
+                {{ form_widget(form.date_cr, {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.date_up) }}
+                {{ form_errors(form.date_up)  }}
+                {{ form_widget(form.date_up, {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.prix) }}
+                {{ form_errors(form.prix)  }}
+                {{ form_widget(form.prix , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.disponible) }}
+                {{ form_errors(form.disponible)  }}
+                {{ form_widget(form.disponible , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.type) }}
+                {{ form_errors(form.type)  }}
+                {{ form_widget(form.type , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+
+
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+    <!-- content-wrapper ends -->
+
+    <!-- row ends -->
+
+    <!-- page-body-wrapper ends -->
+
+
+
+
+
+{% endblock %}
