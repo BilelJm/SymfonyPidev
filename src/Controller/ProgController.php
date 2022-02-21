@@ -13,7 +13,7 @@ class ProgController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('prog/new.html.twig', [
+        return $this->render('prog/index.html.twig', [
             'controller_name' => 'ProgController',
         ]);
     }

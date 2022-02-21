@@ -71,11 +71,11 @@
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
-                                <li class="main_nav_item"><a href="#">home</a></li>
-                                <li class="main_nav_item"><a href="prog/about.html.twig">A propos</a></li>
-
-                                <li class="main_nav_item"><a href="{{ path('annonce_index') }}">Annonces</a></li>
-                                <li class="main_nav_item"><a href="contact.html.twig">contactez-nous</a></li>
+                                <li class="main_nav_item"><a href="{{ path('prog') }}">home</a></li>
+                                <li class="main_nav_item"><a href="{{ path('about') }}">A propos</a></li>
+                                <li class="main_nav_item"><a href="{{ path('programmes') }}">Annonces</a></li>
+                                <li class="main_nav_item"><a href="{{ path('programmes') }}">Programmes</a></li>
+                                <li class="main_nav_item"><a href="contact.html">contactez-nous</a></li>
                             </ul>
                         </div>
 
@@ -117,23 +117,13 @@
 
             <div class="owl-carousel owl-theme home_slider">
 
-                <!-- Slider Item -->
-
-
-
-
-                <!-- Slider Item -->
-
-                <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
                     <div class="home_slider_background" style="background-image:url({{asset('front-office/images/prog.jpg')}})"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
                             <h1></h1>
-                            <h1>Nos Programmes</h1>
-
-
+                            <h1>A propos de nous</h1>
                         </div>
                     </div>
                 </div>
@@ -176,36 +166,38 @@
 				</svg>
             </div>
 
-            <!-- Home Slider Dots -->
-
-
-
         </div>
 
     </div>
-
+    <br> <br>
     <div class="container">
-        <div class="home">
-            <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('images/about_background.jpg') }}"></div>
-            <div class="home_content">
-                <div class="home_title">about us</div>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-lg-7">
-                <div class="intro_image"><img src="{{ asset('../public/front-office/images/intro.png') }}" alt=""></div>
+                <div class="intro_image"><img src="{{ asset('../public/front-office/images/about.jpg') }}" alt=""></div>
             </div>
+
             <div class="col-lg-5">
                 <div class="intro_content">
-                    <div class="intro_title">we have the best tours</div>
-                    <p class="intro_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis vulputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer elementum orci eu vehicula pretium. Donec bibendum tristique condimentum. Aenean in lacus ligula. Phasellus euismod gravida eros. Aenean nec ipsum aliquet, pharetra magna id, interdum sapien. Etiam id lorem eu nisl pellentesque semper. Nullam tincidunt metus placerat, suscipit leo ut, tempus nulla. Fusce at eleifend tellus. Ut eleifend dui nunc, non fermentum quam placerat non. Etiam venenatis nibh augue, sed eleifend justo tristique eu</p>
-                    <div class="button intro_button"><div class="button_bcg"></div><a href="{{asset('#')}}">explore now<span></span><span></span><span></span></a></div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1> Wiن ?</h1>
+                    <br>
+                    <div class="intro_title">Pas une destination</div>
+                    <p class="intro_text"> Wiن ? est un site web réalisé en 2022. Il vous offre les meilleurs logements ainsi que les meilleures expériences à vivre grâce à ses hôtes expérimentés. Avec Wiن ? vous ne prenez que des souvenirs,</p>
                 </div>
+                <div class="button intro_button"><div class="button_bcg"></div><a href="{{ path('prog') }}">
+                        explorer maintenant<span></span><span></span><span></span></a></div>
+
             </div>
         </div>
     </div>
 
-
+    <br> <br>
     <!-- Footer -->
 
     <footer class="footer">
@@ -297,11 +289,11 @@
                 <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                     <div class="footer_nav">
                         <ul class="footer_nav_list">
-                            <li class="footer_nav_item"><a href="#">Acceuil</a></li>
-                            <li class="footer_nav_item"><a href="{{ asset('front-office/about.html.twig') }}">A propos</a></li>
-                            <li class="footer_nav_item"><a href="{{ asset('front-office/offers.html.twig') }}">Annonces</a></li>
-                            <li class="footer_nav_item"><a href="{{ asset('front-office/blog.html') }}">Programmes</a></li>
-                            <li class="footer_nav_item"><a href="{{ asset('front-office/contact.html.twig') }}">contactez-nous</a></li>
+                            <li class="footer_nav_item"><a href="{{ path('prog') }}">Acceuil</a></li>
+                            <li class="footer_nav_item"><a href="{{ path('about') }}">A propos</a></li>
+                            <li class="footer_nav_item"><a href="{{ path('programmes') }}">Annonces</a></li>
+                            <li class="footer_nav_item"><a href="{{ path('programmes') }}">Programmes</a></li>
+                            <li class="footer_nav_item"><a href="{{ path('contact') }}">contactez-nous</a></li>
                         </ul>
                     </div>
                 </div>
