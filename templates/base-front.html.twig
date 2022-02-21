@@ -576,11 +576,14 @@
 
                     <div class="cta_slider_container">
                         <div class="owl-carousel owl-theme cta_slider">
+
                             {% for logement in logements %}
                             <!-- CTA Slider Item -->
                             <div class="owl-item cta_item text-center">
-
-                                <div class="cta_title">{{ logement.titre }}</div>
+                                {% if logement.filename %}
+                                    <img src="{{ vich_uploader_asset(logement,'imageFile') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                                {% endif %}
+                                <div class="cta_title">{{ logement.titre }} | {{ logement.addresse }}</div>
                                 <div class="rating_r rating_r_4">
                                     <i></i>
                                     <i></i>
@@ -588,6 +591,13 @@
                                     <i></i>
                                     <i></i>
                                 </div>
+
+                                <p class="cta_text">
+                                    {% for equipment in logement.equipements %}
+                                        {{ equipment.nom }} /
+                                    {% endfor %}
+                                </p>
+
                                 <p class="cta_text">{{ logement.description }}</p>
                                 <div class="button cta_button"><div class="button_bcg"></div><a href="{{ path('logement_new') }}">Créer logement<span></span><span></span><span></span></a></div>
                             </div>

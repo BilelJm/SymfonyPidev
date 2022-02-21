@@ -7,9 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=LogementRepository::class)
+ * @Vich\Uploadable
  */
 class Logement
 {
@@ -56,17 +61,41 @@ class Logement
      */
     private $hote;
 
-
     /**
      * @ORM\ManyToMany(targetEntity=Equipement::class, inversedBy="logements")
      */
     private $equipements;
 
-  
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     * @var string
+     */
+    private $filename;
+
+    /**
+     * @Vich\UploadableField(mapping="logment_image", fileNameProperty="filename")
+     * @Assert\Image(
+     * mimeTypes = {"image/png","image/jpeg","image/webp"},
+     * mimeTypesMessage = "Please upload a valid file"
+     *
+     * ),
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime",nullable=true, columnDefinition="DATETIME on update CURRENT_TIMESTAMP")
+     */
+    private $createdAt;
+    /**
+     * @ORM\Column(type="datetime",nullable=true, columnDefinition="DATETIME on update CURRENT_TIMESTAMP")
+     */
+    private $updatedAt;
+
 
     public function __construct()
     {
-      
+        $this->createdAt = new \DateTimeImmutable('now');
         $this->equipements = new ArrayCollection();
     }
 
@@ -147,6 +176,53 @@ class Logement
 
         return $this;
     }
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
 
+    /**
+     *@return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param null|string $filename
+     * @return Logement
+     */
+    public function setFilename(?string $filename): Logement
+    {
+        $this->filename = $filename;
+        return $this;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): Logement
+    {
+        $this->imageFile = $imageFile;
+        if (null != $imageFile) {
+            if ($this->imageFile instanceof UploadedFile) {
+                $this->updatedAt = new \DateTime('now');
+            }
+        }
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
 
 }

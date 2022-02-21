@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Logement;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,10 @@ class LogementType extends AbstractType
             ->add('description')
             ->add('addresse')
             ->add('equipements')
-          //  ->add('hote')
+            ->add('imageFile',FileType::class,[
+                'required' => false
+                ])
+
         ;
     }
 
