@@ -30,7 +30,7 @@
                                 <tr>
                                  <td>
                                      {% if logement.filename %}
-                                     <img src="{{ vich_uploader_asset(logement,'imageFile') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                                     <img src="{{ vich_uploader_asset(logement,'imageFile') }}" alt="card-img-top" style="width: 100%; height:auto;">{# Chargement de l'image avec vich #}
                                      {% endif %}
                                  </td>
                                 <td>{{ logement.id }}</td>

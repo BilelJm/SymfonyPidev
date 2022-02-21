@@ -8,6 +8,14 @@
     <table class="table">
         <tbody>
             <tr>
+                <th>Image</th>
+                <th>
+                    {% if logement.filename %}
+                        <img src="{{ vich_uploader_asset(logement,'imageFile') }}" alt="card-img-top" style="width: 200px; height:200px;">{# Chargement de l'image avec vich #}
+                    {% endif %}
+                </th>
+            </tr>
+            <tr>
                 <th>Id</th>
                 <td>{{ logement.id }}</td>
             </tr>
@@ -17,7 +25,9 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ logement.description }}</td>
+
+                <td>{{ logement.description|length > 30 ? logement.description| nl2br :  logement.description  }}</td>
+
             </tr>
             <tr>
                 <th>Addresse</th>
