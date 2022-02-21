@@ -19,8 +19,7 @@
                 <th>Guide</th>
                 <th>Transport</th>
                 <th>Image1</th>
-                <th>Image2</th>
-                <th>Image3</th>
+
             </tr>
         </thead>
         <tbody>
@@ -36,15 +35,9 @@
                 <td>{{ programme.statut }}</td>
                 <td>{{ programme.Guide }}</td>
                 <td>{{ programme.transport }}</td>
-                <td>
-                <img src="{{ programme.image.getFile() }}">
-                </td>
-                <td>
-                    <img src="{{ programme.image2.getFile() }}">
-                </td>
-                <td>
-                    <img src="'{{ programme.image3.getFile() }}">
-                </td>
+
+
+
 
                 <td>
                     <a class="btn btn-behance mt-2" href="{{ path('programme_show', {'id': programme.id}) }}">Afficher</a>

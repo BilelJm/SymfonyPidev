@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProgrammeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -87,40 +89,10 @@ class Programme
      */
     private $statut;
 
-    /**
-     * @Assert\NotBlank (message="l'image est obligatoire")
-     * @ORM\ManyToOne(targetEntity=Image::class, inversedBy="programme",cascade={"persist"})
-     * * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-    private $image;
-    /**
-     * @Assert\NotBlank (message="l'image est obligatoire")
-     * @ORM\ManyToOne(targetEntity=Image::class, inversedBy="programme" , cascade={"persist"})
-     * * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-    private $image2;
 
-    /**
-     * @Assert\NotBlank (message="l'image est obligatoire")
-     * @ORM\ManyToOne(targetEntity=Image::class, inversedBy="programme",cascade={"persist"})
-     * * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-    private $image3;
+
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity=OptionGuide::class, inversedBy="programme")
@@ -131,6 +103,16 @@ class Programme
      * @ORM\ManyToOne(targetEntity=OptionTransport::class, inversedBy="programmes")
      */
     private $transport;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="programmes", orphanRemoval=true, cascade={"persist"})
+     */
+    private $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -221,39 +203,6 @@ class Programme
         return $this;
     }
 
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(?Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-    public function getImage2(): ?Image
-    {
-        return $this->image2;
-    }
-
-    public function setImage2(?Image $image): self
-    {
-        $this->image2 = $image;
-
-        return $this;
-    }
-    public function getImage3(): ?Image
-    {
-        return $this->image3;
-    }
-
-    public function setImage3(?Image $image): self
-    {
-        $this->image3 = $image;
-
-        return $this;
-    }
 
     public function getGuide(): ?OptionGuide
     {
@@ -275,6 +224,36 @@ class Programme
     public function setTransport(?OptionTransport $transport): self
     {
         $this->transport = $transport;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProgrammes($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProgrammes() === $this) {
+                $image->setProgrammes(null);
+            }
+        }
 
         return $this;
     }

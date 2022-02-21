@@ -43,7 +43,7 @@ class OptionGuide
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank (message="le prenom du guide est obligatoire")
-    @Assert\Length(min = 8, max =8, minMessage = "le numéro de telephne doit contenir 8 chiffres",
+    @Assert\Length(min =8, max =8, minMessage = "le numéro de telephne doit contenir 8 chiffres",
      * maxMessage = "le numéro de telephne doit contenir 8 chiffres")
     @Assert\Regex(pattern="/^[0-9]*$/", message="chiffres seulement")
      *

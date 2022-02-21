@@ -21,7 +21,7 @@ class Category
     private $id;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank (message="le titre est obligatoire")
      * @ORM\Column(type="string", length=255)
      *  *  * @Assert\Regex(
      *     pattern="/\d/",

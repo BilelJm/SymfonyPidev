@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Entity\Programme;
 use App\Form\ProgrammeType;
 use App\Repository\ProgrammeRepository;
@@ -40,9 +41,16 @@ class ProgrammeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $programme->getImage()->setNom('image');
-            $programme->getImage2()->setNom('image');
-            $programme->getImage3()->setNom('image');
+            $images=$form->get('images')->getData();
+            foreach ($images as $image) {
+                $file = md5(uniqid()) . '.' . $image->guessExtension();
+                $image->move($this->getParameter('images_directory'), $file);
+                $img = new Image();
+                $img->setNom($file);
+                $programme->addImage($img);
+            }
+
+
             $entityManager->persist($programme);
             $entityManager->flush();
 

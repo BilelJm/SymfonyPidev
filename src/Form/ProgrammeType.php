@@ -8,6 +8,7 @@ use App\Entity\OptionTransport;
 use App\Entity\Programme;
 use App\Entity\Statut;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -28,9 +29,8 @@ class ProgrammeType extends AbstractType
             ->add('statut',EntityType::class,[
         'class'=> Statut::class,
         'choice_label'=> 'nom'])
-            ->add('image',ImageType::class,['label'=>'Ajouter une premiere image'])
-            ->add('image2',ImageType::class,['label'=>'Ajouter une deuxiéme'])
-            ->add('image3',ImageType::class,['label'=>'Ajouter une troisiéme image'])
+            ->add('images',FileType::class,['label'=> false, 'multiple' => true, 'mapped'=>false, 'required'=>false])
+
             ->add('guide',EntityType::class,[
                 'class'=> OptionGuide::class,
                 'choice_label'=> 'nom'

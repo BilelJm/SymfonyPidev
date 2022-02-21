@@ -41,11 +41,11 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-                            <div class="user_box_login user_box_link"><a href="#">Rejoindre Notre Equipe</a></div>
+                            <div class="user_box_login user_box_link"><a href="{{ path('security_register ') }}">Rejoindre Notre Equipe</a></div>
 
-                            <div class="user_box_login user_box_link"><a href="#">Se Connecter</a></div>
+                            <div class="user_box_login user_box_link"><a href="{{ path('app_login') }}">Se Connecter</a></div>
 
-                            <div class="user_box_register user_box_link"><a href="#">Céer Un Compte</a></div>
+                            <div class="user_box_register user_box_link"><a href="{{ path('security_register ') }}">Céer Un Compte</a></div>
                         </div>
                     </div>
                 </div>
@@ -63,11 +63,11 @@
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
-                                <li class="main_nav_item"><a href="#">home</a></li>
-                                <li class="main_nav_item"><a href="about.html">A propos</a></li>
-                                <li class="main_nav_item"><a href="{{ path('programme_index') }}">Annonces</a></li>
-                                <li class="main_nav_item"><a href="{{ path('programme_index') }}">Programmes</a></li>
-                                <li class="main_nav_item"><a href="contact.html">contactez-nous</a></li>
+                                <li class="main_nav_item"><a href="{{ path('prog') }}">home</a></li>
+                                <li class="main_nav_item"><a href="{{ path('about') }}">A propos</a></li>
+                                <li class="main_nav_item"><a href="{{ path('programmes') }}">Annonces</a></li>
+                                <li class="main_nav_item"><a href="{{ path('programmes') }}">Programmes</a></li>
+                                <li class="main_nav_item"><a href="{{ path('contact') }}">contactez-nous</a></li>
                             </ul>
                         </div>
 
@@ -91,10 +91,10 @@
             <div class="logo menu_logo"><a href="#"><img src="{{ asset('front-office/images/logo.png') }}" alt=""></a></div>
             <ul>
                 <li class="menu_item"><a href="#">home</a></li>
-                <li class="menu_item"><a href="{{ asset('front-office/about.html') }}">about us</a></li>
-                <li class="menu_item"><a href="{{ asset('front-office/offers.html') }}">offers</a></li>
-                <li class="menu_item"><a href="{{ asset('front-office/blog.html') }}">news</a></li>
-                <li class="menu_item"><a href="{{ asset('front-office/contact.html') }}">contact</a></li>
+                <li class="menu_item"><a href="{{ path('about') }}">A propos</a></li>
+                <li class="menu_item"><a href="{{ path('programmes') }}">Annonces</a></li>
+                <li class="menu_item"><a href="{{ path('programmes') }}">Programmes</a></li>
+                <li class="menu_item"><a href="{{ path('contact') }}">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -468,7 +468,7 @@
                         <div class="intro_item_background" style="background-image:url({{ asset('front-office/images/sousse.jpg')}})"></div>
                         <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-                            <div class="button intro_button"><div class="button_bcg"></div><a href="#">Détails<span></span><span></span><span></span></a></div>
+                            <div class="button intro_button"><div class="button_bcg"></div><a href="{{ path('prog') }}">Détails<span></span><span></span><span></span></a></div>
                             <div class="intro_center text-center">
                                 <h1>Sousse</h1>
 
@@ -493,7 +493,7 @@
                         <div class="intro_item_background" style="background-image:url({{ asset('front-office/images/tabarka.jpg')}})"></div>
                         <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-                            <div class="button intro_button"><div class="button_bcg"></div><a href="#">Détails<span></span><span></span><span></span></a></div>
+                            <div class="button intro_button"><div class="button_bcg"></div><a href="{{ path('programmes') }}">Détails<span></span><span></span><span></span></a></div>
                             <div class="intro_center text-center">
                                 <h1>Tabarka</h1>
 
@@ -518,7 +518,7 @@
                         <div class="intro_item_background" style="background-image:url({{ asset('front-office/images/sidi.jpg')}})"></div>
                         <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-                            <div class="button intro_button"><div class="button_bcg"></div><a href="#">Détails<span></span><span></span><span></span></a></div>
+                            <div class="button intro_button"><div class="button_bcg"></div><a href="{{ path('prog') }}">Détails<span></span><span></span><span></span></a></div>
                             <div class="intro_center text-center">
                                 <h1>Sidi Bou Said</h1>
 
@@ -552,10 +552,9 @@
 
                     <div class="cta_slider_container">
                         <div class="owl-carousel owl-theme cta_slider">
-
                             <!-- CTA Slider Item -->
                             <div class="owl-item cta_item text-center">
-                                <div class="cta_title">maldives deluxe package</div>
+                                <div class="cta_title">Votre Envi Est Notre Affaire</div>
                                 <div class="rating_r rating_r_4">
                                     <i></i>
                                     <i></i>
@@ -563,13 +562,13 @@
                                     <i></i>
                                     <i></i>
                                 </div>
-                                <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
+                                <p class="cta_text"></p>
+                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">Reserver maintenant<span></span><span></span><span></span></a></div>
                             </div>
 
                             <!-- CTA Slider Item -->
                             <div class="owl-item cta_item text-center">
-                                <div class="cta_title">maldives deluxe package</div>
+                                <div class="cta_title">Bien logé dans un bon logement</div>
                                 <div class="rating_r rating_r_4">
                                     <i></i>
                                     <i></i>
@@ -577,13 +576,15 @@
                                     <i></i>
                                     <i></i>
                                 </div>
-                                <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
+                                <p class="cta_text"></p>
+                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">Reserver maintenant<span></span><span></span><span></span></a></div>
                             </div>
+
+
 
                             <!-- CTA Slider Item -->
                             <div class="owl-item cta_item text-center">
-                                <div class="cta_title">maldives deluxe package</div>
+                                <div class="cta_title"> Parce que vous le valez bien</div>
                                 <div class="rating_r rating_r_4">
                                     <i></i>
                                     <i></i>
@@ -591,8 +592,8 @@
                                     <i></i>
                                     <i></i>
                                 </div>
-                                <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
+                                <p class="cta_text"></p>
+                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">Reserver maintenant<span></span><span></span><span></span></a></div>
                             </div>
 
                         </div>
@@ -682,7 +683,7 @@
                                             <li class="offers_icons_item"><img src="{{ asset('front-office/images/sailboat.png') }}" alt=""></li>
                                         </ul>
                                     </div>
-                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html') }}">read more</a></div>
+                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html.twig') }}">read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -719,7 +720,7 @@
                                             <li class="offers_icons_item"><img src="{{ asset('front-office/images/sailboat.png') }}" alt=""></li>
                                         </ul>
                                     </div>
-                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html') }}">read more</a></div>
+                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html.twig') }}">read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -756,7 +757,7 @@
                                             <li class="offers_icons_item"><img src="{{ asset('front-office/images/sailboat.png') }}" alt=""></li>
                                         </ul>
                                     </div>
-                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html') }}">read more</a></div>
+                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html.twig') }}">read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -793,7 +794,7 @@
                                             <li class="offers_icons_item"><img src="{{ asset('front-office/images/sailboat.png') }}" alt=""></li>
                                         </ul>
                                     </div>
-                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html') }}">read more</a></div>
+                                    <div class="offers_link"><a href="{{ asset('front-office/offers.html.twig') }}">read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -976,7 +977,7 @@
         </div>
     </div>
 
-          
+
 
     <div class="contact">
         <div class="contact_background" style="background-image:url({{ asset('front-office/images/contact.png')}})"></div>
@@ -1096,10 +1097,10 @@
                         <div class="footer_nav">
                             <ul class="footer_nav_list">
                                 <li class="footer_nav_item"><a href="#">Acceuil</a></li>
-                                <li class="footer_nav_item"><a href="{{ asset('front-office/about.html') }}">A propos</a></li>
-                                <li class="footer_nav_item"><a href="{{ asset('front-office/offers.html') }}">Annonces</a></li>
-                                <li class="footer_nav_item"><a href="{{ asset('front-office/blog.html') }}">Programmes</a></li>
-                                <li class="footer_nav_item"><a href="{{ asset('front-office/contact.html') }}">contactez-nous</a></li>
+                                <li class="footer_nav_item"><a href="{{ path('about') }}">A propos</a></li>
+                                <li class="footer_nav_item"><a href="{{ path('programmes') }}">Annonces</a></li>
+                                <li class="footer_nav_item"><a href="{{ path('programmes') }}">Programmes</a></li>
+                                <li class="footer_nav_item"><a href="{{ path('contact') }}">contactez-nous</a></li>
                             </ul>
                         </div>
                     </div>
