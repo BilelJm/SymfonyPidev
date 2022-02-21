@@ -43,7 +43,9 @@ class ProgrammeController extends AbstractController
 
             $images=$form->get('images')->getData();
             foreach ($images as $image) {
+
                 $file = md5(uniqid()) . '.' . $image->guessExtension();
+
                 $image->move($this->getParameter('images_directory'), $file);
                 $img = new Image();
                 $img->setNom($file);
@@ -84,6 +86,17 @@ class ProgrammeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $images=$form->get('images')->getData();
+            foreach ($images as $image) {
+
+                $file = md5(uniqid()) . '.' . $image->guessExtension();
+
+                $image->move($this->getParameter('images_directory'), $file);
+                $img = new Image();
+                $img->setNom($file);
+                $programme->addImage($img);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('programme_index', [], Response::HTTP_SEE_OTHER);
