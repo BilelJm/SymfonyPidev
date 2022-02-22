@@ -1,0 +1,39 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}Liste des moyens de transport{% endblock %}
+
+{% block body %}
+    <h1>Liste des moyens de transport</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matricule</th>
+                <th>Capacite</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for option_transport in option_transports %}
+            <tr>
+                <td>{{ option_transport.id }}</td>
+                <td>{{ option_transport.matricule }}</td>
+                <td>{{ option_transport.capacite }}</td>
+
+                <td>
+                    <a class="btn btn-behance mt-2" href="{{ path('option_transport_show', {'id': option_transport.id}) }}">Afficher</a>
+
+                    <a class="btn btn-behance mt-2" href="{{ path('option_transport_edit', {'id': option_transport.id}) }}"> Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Liste vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('option_transport_new') }}">Nouveau</a>
+{% endblock %}

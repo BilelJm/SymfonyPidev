@@ -1,0 +1,38 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}New OptionGuide{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouvel guide</h1>
+    <div class="card col-lg-15 mx-auto">
+        <div class="card-body px-50 py-50">
+
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+            <div class="form-group">
+                {{ form_label(form.Nom) }}
+                {{ form_errors(form.Nom)  }}
+                {{ form_widget(form.Nom , {'attr':{'class':'form-control p_input'}}) }}
+
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.Prenom,) }}
+                {{ form_errors(form.Prenom)  }}
+                {{ form_widget(form.Prenom, {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.Tel) }}
+                {{ form_errors(form.Tel)  }}
+                {{ form_widget(form.Tel , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+    <a class="btn btn-success " href="{{ path('option_guide_index') }}">Retourner à la liste</a>
+{% endblock %}

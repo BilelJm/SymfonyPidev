@@ -3,9 +3,12 @@
 namespace App\Form;
 
 use App\Entity\User;
+use phpDocumentor\Reflection\Type;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProfileType extends AbstractType
 {
@@ -16,9 +19,14 @@ class ProfileType extends AbstractType
             ->add('tel')
             ->add('firstName')
             ->add('lastName')
+            ->add('picture', FileType::class, [
+                'label' => 'Brochure (PDF file)',
+                'required' => false,
+                'data_class' => null
+            ])
+            // ...
 
         ;
     }
-
 
 }

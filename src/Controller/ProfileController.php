@@ -12,8 +12,11 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
+use Symfony\Component\Filesystem\Filesystem;
 
 class  ProfileController extends AbstractController
 {
@@ -31,6 +34,32 @@ class  ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
+            $images=$form->get('picture')->getData();
+            if ($images) {
+
+                $originalFilename = pathinfo($images->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                //$safeFilename = transliterator_transliterate(' Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $originalFilename.'-'.uniqid().'.'.$images->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $images->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                //$product->setBrochureFilename($newFilename);
+                $user->setPicture($newFilename);
+            }
+
+
 
             $em= $this->getDoctrine()->getManager();
             $em->persist($user);

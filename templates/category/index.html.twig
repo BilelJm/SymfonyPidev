@@ -1,0 +1,37 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}Liste Categories{% endblock %}
+
+{% block body %}
+    <h1>Liste Categories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.Titre }}</td>
+
+                <td>
+                    <a class="btn btn-behance mt-2" href="{{ path('category_show', {'id': category.id}) }}">Afficher</a>
+
+                    <a class="btn btn-behance mt-2" href="{{ path('category_show', {'id': category.id}) }}"> Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Liste Vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('category_new') }}">Nouveau</a>
+{% endblock %}

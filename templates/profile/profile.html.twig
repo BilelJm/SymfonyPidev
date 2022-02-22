@@ -21,9 +21,19 @@
                     {{ form_start(form) }}
                     <div class="account-settings">
                         <div class="user-profile">
-                            <div class="user-avatar">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                            <div class="user-avatar h-10 ">
+                                {% if app.user.getPicture()!=null %}
+
+                                    <img class="avatar img-circle img-thumbnail" src="{{ asset('/uploads/'~app.user.getPicture() ) }}"alt="Profile Pic"/>
+                                {% endif %}
+
+                                {% if app.user.getPicture()==null %}
+
+                                    <img class="avatar img-circle img-thumbnail w-100" src="{{ asset('/uploads/avatar.png') }}" alt="Profile Pic"/>
+                                {% endif %}
+                                {{ form_widget(form.picture, {'attr':{'class': ''}}) }}
                             </div>
+
 
                             <h5 class="user-name">{{ app.user.username }}</h5>
                             <h6 class="user-email">{{ app.user.email }} </h6>
@@ -47,7 +57,6 @@
                             <h6 class="mb-2 text-primary">Personal Details</h6>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
                             <div class="form-group">
                                 {{ form_label(form.username,"Nom d\'utilisateur") }}
                                 {{ form_errors(form.username)  }}

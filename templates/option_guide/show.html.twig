@@ -1,0 +1,34 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}OptionGuide{% endblock %}
+
+{% block body %}
+    <h1>OptionGuide</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ option_guide.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ option_guide.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ option_guide.Prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ option_guide.Tel }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('option_guide_index') }}">back to list</a>
+
+    <a href="{{ path('option_guide_edit', {'id': option_guide.id}) }}">edit</a>
+
+    {{ include('option_guide/_delete_form.html.twig') }}
+{% endblock %}

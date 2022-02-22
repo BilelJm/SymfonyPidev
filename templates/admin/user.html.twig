@@ -1,3 +1,56 @@
-{% extends 'backoffice.html.twig' %}
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %} Utilisateurs {% endblock %}
+
+{% block body %}
+
+    <table class="table  table-dark ">
+        <thead>
+        <tr>
+            <th scope="col">Surnom</th>
+            <th >Email</th>
+            <th>Prénom</th>
+            <th >Nom</th>
+            <th >Téléphone</th>
+            <th >Photo de profile</th>
+            <th >Role</th>
+            <th>Acttion</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for user in users %}
+            {% if user.email != app.user.email %}
+                <th>
+
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.Tel }}</td>
+                    {#  <td>{{ user.picture }}</td>#}
+                    <td scope="row"> {% for role in user.roles %}
+                            {{ role }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success">
+                            <a href="{{ path('updateuser',{'id':user.id}) }}"> Modifier </a>
+                        </button>
 
 
+                        <button type="button" class="btn btn-danger" >
+                            <a href="{{ path('deleteUser',{'id':user.id}) }}">Supprimer</a>
+                        </button>
+                    </td>
+
+                </th>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+
+{% endblock %}

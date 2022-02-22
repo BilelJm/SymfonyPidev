@@ -28,6 +28,7 @@ security:
                 path: aplogout
                 # where to redirect after logout
                 target: aplogin
+            access_denied_url: /login
 
         main:
             anonymous: lazy
@@ -41,6 +42,7 @@ security:
                 path: app_logout
                 # where to redirect after logout
                 target: prog
+            access_denied_url: /login
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

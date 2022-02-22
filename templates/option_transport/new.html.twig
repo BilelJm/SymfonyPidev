@@ -1,0 +1,30 @@
+{% extends 'back-officenewprog.html.twig' %}
+
+{% block title %}New OptionTransport{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau moyen de transport</h1>
+<div class="card col-lg-15 mx-auto">
+    <div class="card-body px-50 py-50">
+
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <div class="form-group">
+        {{ form_label(form.matricule) }}
+        {{ form_errors(form.matricule)  }}
+        {{ form_widget(form.matricule, {'attr':{'class':'form-control p_input'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.capacite) }}
+        {{ form_errors(form.capacite)  }}
+        {{ form_widget(form.capacite, {'attr':{'class':'form-control p_input'}}) }}
+    </div>
+
+
+        {{ form_end(form) }}
+        <a class= "btn btn-success" href="{{ path('option_transport_index') }}">Retourner a la liste</a>
+    </div>
+
+</div>
+{% endblock %}

@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;;
@@ -49,10 +52,6 @@ class User implements UserInterface
      */
     private $lastName;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -64,6 +63,13 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles =['ROLE_USER'];
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $picture;
+
+
 
 
 
@@ -134,17 +140,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
 
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
 
     public function getPassword(): ?string
     {
@@ -183,6 +179,24 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+
+
+
+
+
 
 
 }

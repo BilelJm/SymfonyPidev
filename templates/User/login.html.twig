@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+        <title>Win</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset ('back-office/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{ asset ('back-office/assets/vendors/css/vendor.bundle.base.css')}}">
@@ -16,7 +16,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset ('back-office/assets/css/style.css')}}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset ('back-office/assets/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{ asset ('back-office/assets/images/win.png') }}" />
 </head>
 <body>
 <div class="container-scroller">
@@ -25,7 +25,7 @@
             <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
                 <div class="card col-lg-4 mx-auto">
                     <div class="card-body px-5 py-5">
-                        <h3 class="card-title text-left mb-3">Login</h3>
+                        <h3 class="card-title text-left mb-3">Connexion </h3>
 
                         {% block body %}
 
@@ -40,13 +40,13 @@
                                     </div>
                                 {% endif %}
 
-                                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
                                 <div class="form-group">
                                     <label for="inputEmail">Email</label>
                                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword">Password</label>
+                                    <label for="inputPassword">Mot de passe</label>
                                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                                 </div>
 
@@ -56,15 +56,17 @@
 
 
 
-                                <div class="checkbox mb-3">
+                                <div class="form-group">
                                     <label>
-                                        <input type="checkbox" name="_remember_me"> Remember me
+                                        Vous n'avez pas de compte ?
+                                       <a href="{{ path('security_register') }}"> S'inscrire</a>
                                     </label>
                                 </div>
 
 
+
                                 <button class="btn btn-lg btn-primary" type="submit">
-                                    Sign in
+                                    Connexion
                                 </button>
                             </form>
                         {% endblock %}
