@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ProgrammeRepository;
 
 class ProgController extends AbstractController
 {
@@ -20,10 +21,10 @@ class ProgController extends AbstractController
     /**
      * @Route("/programmes", name="programmes")
      */
-    public function programmes(): Response
+    public function programmes(ProgrammeRepository $programmeRepository): Response
     {
         return $this->render('programme/programmes.html.twig', [
-            'controller_name' => 'ProgController',
+            'programmes' => $programmeRepository->findAll(),
         ]);
     }
     /**

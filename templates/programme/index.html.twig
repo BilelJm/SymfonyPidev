@@ -36,6 +36,15 @@
                 <td>{{ programme.Guide }}</td>
                 <td>{{ programme.transport }}</td>
 
+                <td>
+                    {% for image in programme.getImages() %}
+                        <img src="{{ asset('uploads/')~image.getNom() }}">
+                    {% endfor %}
+                </td>
+
+
+
+
 
 
 

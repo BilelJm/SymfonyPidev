@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Wiن? Back</title>
 
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('back-office/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -21,7 +21,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('back-office/assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('back-office/assets/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('back-office/assets/images/icone.png') }}" />
 </head>
 <body>
 <div class="container-scroller">
@@ -84,6 +84,10 @@
                     </ul>
                 </div>
             </li>
+
+
+
+
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 
@@ -100,7 +104,13 @@
 
 
 
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ path('programmes') }}">
+                    <span class="menu-title">Consulter Front</span>
 
+                </a>
+
+            </li>
 
 
         </ul>
@@ -131,11 +141,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                            <div class="navbar-profile">
-                                <img class="img-xs rounded-circle" src="{{ asset('back-office/assets/images/bolbol.png') }}" alt="">
-                                <p class="mb-0 d-none d-sm-block navbar-profile-name">BolBol Foumatik</p>
-                                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                            </div>
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                             <h6 class="p-3 mb-0">Profile</h6>

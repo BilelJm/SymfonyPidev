@@ -49,16 +49,14 @@
             </tr>
             <tr>
                 <th>Images</th>
-                <td>{{ programme.image }}</td>
+                <td>
+                    {% for image in programme.getImages() %}
+                        <img src="{{ asset('uploads/')~image.getNom() }}">
+                    {% endfor %}
+                </td>
             </tr>
-            <tr>
-                <th></th>
-                <td>{{ programme.image2 }}</td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ programme.image3 }}</td>
-            </tr>
+
+
             <a class= "btn btn-success" href="{{ path('programme_index') }}">Retourner a la liste</a>
         </tbody>
     </table>
