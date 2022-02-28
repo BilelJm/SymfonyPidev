@@ -73,15 +73,32 @@ class Logement
     private $filename;
 
     /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     * @var string
+     */
+    private $qrFileName;
+
+    /**
      * @Vich\UploadableField(mapping="logment_image", fileNameProperty="filename")
      * @Assert\Image(
      * mimeTypes = {"image/png","image/jpeg","image/webp"},
      * mimeTypesMessage = "Please upload a valid file"
      *
-     * ),
+     * )
      * @var File
      */
     private $imageFile;
+
+    /**
+     * @Vich\UploadableField(mapping="qr_image", fileNameProperty="qrFileName")
+     * @Assert\Image(
+     * mimeTypes = {"image/png","image/jpeg","image/webp"},
+     * mimeTypesMessage = "Please upload a valid file"
+     *
+     * )
+     * @var File
+     */
+    private $imageQrFile;
 
     /**
      * @ORM\Column(type="datetime",nullable=true, columnDefinition="DATETIME on update CURRENT_TIMESTAMP")
@@ -91,6 +108,11 @@ class Logement
      * @ORM\Column(type="datetime",nullable=true, columnDefinition="DATETIME on update CURRENT_TIMESTAMP")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive = true;
 
 
     public function __construct()
@@ -216,6 +238,48 @@ class Logement
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getQrFileName(): string
+    {
+        return $this->qrFileName;
+    }
+
+    /**
+     * @param null|string $qrFileName
+     * @return Logement
+     */
+    public function setQrFileName(string $qrFileName): Logement
+    {
+        $this->qrFileName = $qrFileName;
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageQrFile(): ?File
+    {
+        return $this->imageQrFile;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageQrFile
+     */
+    public function setImageQrFile(?File $imageQrFile): Logement
+    {
+        $this->imageQrFile = $imageQrFile;
+        if (null != $imageQrFile) {
+            if ($this->imageQrFile instanceof UploadedFile) {
+                $this->updatedAt = new \DateTime('now');
+            }
+        }
+
+        return $this;
+    }
+
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -223,6 +287,18 @@ class Logement
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 
 }

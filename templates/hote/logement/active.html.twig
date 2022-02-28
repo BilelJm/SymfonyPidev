@@ -1,0 +1,35 @@
+{% extends 'hote_layout.html.twig' %}
+
+{% block title %}Activiation Logement{% endblock %}
+
+{% block body %}
+    <h1>Activiation logement</h1>
+
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Activation</h4>
+                    {{ form_start(form) }}
+                    <div class="form-row">
+                        <div class="col">
+                            {{ form_row(form.isActive) }}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-behance mt-2" href="{{ path('logement_index') }}"><i class="mdi mdi-arrow-left"></i> Retour</a>
+
+
+
+{% endblock %}

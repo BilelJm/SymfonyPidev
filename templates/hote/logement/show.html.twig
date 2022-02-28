@@ -4,7 +4,19 @@
 
 {% block body %}
     <h1>Logement</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6>QR Code</h6>
+                </div>
+            </div>
+            {% if logement.qrFileName %}
+                <img src="{{ vich_uploader_asset(logement,'imageQrFile') }}" style="width: 300px;height: 300px" >{# Chargement de l'image avec vich #}
+            {% endif %}
+        </div>
 
+    </div>
     <table class="table">
         <tbody>
             <tr>
@@ -15,6 +27,7 @@
                     {% endif %}
                 </th>
             </tr>
+
             <tr>
                 <th>Id</th>
                 <td>{{ logement.id }}</td>
@@ -43,8 +56,15 @@
                 </td>
 
             </tr>
+            <tr>
+                <th>QR CODE</th>
+
+
+
+            </tr>
         </tbody>
     </table>
+
 
     <a class="btn btn-behance mt-2" href="{{ path('logement_index') }}"><i class="mdi mdi-arrow-left"></i> Retour</a>
 

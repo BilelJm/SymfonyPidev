@@ -16,7 +16,7 @@ class ProgController extends AbstractController
     {
         return $this->render('prog/index.html.twig', [
             'controller_name' => 'ProgController',
-            'logements' => $logementRepository->findAll()
+            'logements' => $logementRepository->getActiveLogement()
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Logement;
+use App\Filter\LogementSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,14 +20,45 @@ class LogementRepository extends ServiceEntityRepository
         parent::__construct($registry, Logement::class);
     }
     //Fonction pour récuprer les logements par user $value c'est l'ulisateur authentifier
-    public function findLogementByUser($value)
+    public function findLogementByUser($value,LogementSearch $search)
     {
-        return $this->createQueryBuilder('l') //prefix de pour l'entité au lieu d'ecrire LOGEMENT 
+        if ($search->getId()){
+            return $this->createQueryBuilder('l') //prefix de pour l'entité au lieu d'ecrire LOGEMENT
+                 ->andWhere('l.hote = :val')
+                ->andWhere('l.id = :id')
+                ->setParameter('val', $value)
+                ->setParameter('id',$search->getId())
+                ->getQuery()
+                ->getResult();
+        }
+        if ($search->getName()){
+            return $this->createQueryBuilder('l')
+                ->andWhere('l.hote = :val')
+                ->andWhere('l.titre LIKE :name')
+                ->setParameter('val', $value)
+                ->setParameter('name',$search->getName())
+                ->orderBy('l.id', 'ASC')
+                ->getQuery()
+                ->getResult();
+        }
+
+
+        return $this->createQueryBuilder('l')
             ->andWhere('l.hote = :val')
             ->setParameter('val', $value)
             ->orderBy('l.id', 'ASC')
             ->getQuery()
             ->getResult();
+    }
+
+    public function getActiveLogement(){
+
+        return $this->createQueryBuilder('l')
+                ->andWhere('l.isActive = :val')
+                ->setParameter(':val',true)
+                ->orderBy('l.id','ASC')
+                ->getQuery()
+                ->getResult();
     }
     // /**
     //  * @return Logement[] Returns an array of Logement objects
