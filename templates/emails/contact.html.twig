@@ -1,0 +1,27 @@
+{% extends 'prog/contact.html.twig' %}
+{% block body %}
+{{ form_start(form) }}
+	<div class="form-group">
+							{{ form_label(form.nom,"Nom") }}
+							{{ form_errors(form.nom)  }}
+							{{ form_widget(form.nom , {'attr':{'class':'contact_form_name input_field'}}) }}
+	</div>
+
+	<div class="form-group">
+							{{ form_label(form.email,"Email") }}
+							{{ form_errors(form.email)  }}
+							{{ form_widget(form.email , {'attr':{'class':'contact_form_name input_field'}}) }}
+	</div>
+
+	<div class="form-group">
+							{{ form_label(form.message,"Message") }}
+							{{ form_errors(form.message)  }}
+							{{ form_widget(form.message , {'attr':{'class':'contact_form_name input_field'}}) }}
+	</div>
+	<div class="text-center">
+
+                            {{ form_row(form.envoyer, {'attr':{'class':'btn btn-primary btn-block enter-btn'}}) }}
+	</div>
+{{ form_end(form) }}
+
+{% endblock %}

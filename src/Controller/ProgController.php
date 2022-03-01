@@ -35,13 +35,5 @@ class ProgController extends AbstractController
             'controller_name' => 'ProgController',
         ]);
     }
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact(): Response
-    {
-        return $this->render('prog/contact.html.twig', [
-            'controller_name' => 'ProgController',
-        ]);
-    }
+
 }

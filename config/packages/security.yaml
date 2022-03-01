@@ -29,6 +29,10 @@ security:
                 # where to redirect after logout
                 target: aplogin
             access_denied_url: /login
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
 
         main:
             anonymous: lazy
@@ -43,6 +47,11 @@ security:
                 # where to redirect after logout
                 target: prog
             access_denied_url: /login
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

@@ -25,11 +25,13 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank (message="le surnom est obligatoire")
      * @ORM\Column(type="string", length=255)
      */
     private $username;
 
     /**
+     * @Assert\NotBlank (message="l'email est obligatoire")
      * @ORM\Column(type="string", length=255)
      * @Assert\Email()
      */
@@ -37,17 +39,20 @@ class User implements UserInterface
 
 
     /**
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
 
      */
     private $Tel;
 
     /**
+     * @Assert\NotBlank (message="le prenom est obligatoire")
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
 
     /**
+     * @Assert\NotBlank (message="le nom est obligatoire")
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
@@ -65,7 +70,7 @@ class User implements UserInterface
     private $roles =['ROLE_USER'];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255 , nullable=true)
      */
     private $picture;
 

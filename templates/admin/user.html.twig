@@ -12,7 +12,7 @@
             <th>Prénom</th>
             <th >Nom</th>
             <th >Téléphone</th>
-            <th >Photo de profile</th>
+            <th >Photo de <profile></profile></th>
             <th >Role</th>
             <th>Acttion</th>
 
@@ -22,14 +22,23 @@
         <tbody>
         {% for user in users %}
             {% if user.email != app.user.email %}
-                <th>
+                <tr>
 
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.firstName }}</td>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.Tel }}</td>
-                    {#  <td>{{ user.picture }}</td>#}
+                    <td>{% if app.user.getPicture()!=null %}
+
+                            <img class="avatar img-circle img-thumbnail" src="{{ asset('/uploads/'~ user.getPicture() ) }}"alt="Profile Pic"/>
+                        {% endif %}
+
+                        {% if app.user.getPicture()==null %}
+
+                            <img class="avatar img-circle img-thumbnail w-100" src="{{ asset('/uploads/avatar.png') }}" alt="Profile Pic"/>
+                        {% endif %}
+</td>
                     <td scope="row"> {% for role in user.roles %}
                             {{ role }}
                         {% endfor %}
@@ -45,7 +54,7 @@
                         </button>
                     </td>
 
-                </th>
+                </tr>
             {% endif %}
         {% endfor %}
         </tbody>

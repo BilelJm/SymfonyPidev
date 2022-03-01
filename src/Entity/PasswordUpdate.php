@@ -10,6 +10,7 @@ class PasswordUpdate
     private $oldPassword;
 
     /**
+     * @Assert\NotBlank (message="le mot de passe est obligatoire")
      * @Assert\EqualTo(propertyPath="newPassword", message="Vous n'avez pas correctement confirmé votre nouveau mot de passe ")
      */
     private $newPassword;

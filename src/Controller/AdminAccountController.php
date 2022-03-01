@@ -25,6 +25,16 @@ class AdminAccountController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/dash", name="admin_dash")
+     */
+    public function index(): Response
+    {
+
+        return $this->render('admin/user.html.twig', [
+
+        ]);
+    }
 
 
     /**
