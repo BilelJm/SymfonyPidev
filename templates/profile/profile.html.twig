@@ -21,28 +21,23 @@
                 <div class="card-body">
                     {{ form_start(form) }}
                     <div class="account-settings">
+
+
+
                         <div class="user-profile">
-                            <div class="user-avatar h-10 ">
-                                {% if app.user.getPicture()!=null %}
-
-                                    <img class="avatar img-circle img-thumbnail" src="{{ asset('/uploads/'~app.user.getPicture() ) }}"alt="Profile Pic"/>
-                                {% endif %}
-
-                                {% if app.user.getPicture()==null %}
-
-                                    <img class="avatar img-circle img-thumbnail w-100" src="{{ asset('/uploads/avatar.png') }}" alt="Profile Pic"/>
-                                {% endif %}
-                                {{ form_widget(form.picture, {'attr':{'class': ''}}) }}
-                            </div>
-
-
+                            <div class="user-profile">
                             <h5 class="user-name">{{ app.user.username }}</h5>
                             <h6 class="user-email">{{ app.user.email }} </h6>
+                            </div>
+
+                            {% if app.user.getPicture()!=null %}
+
+                                <img class="avatar img-circle img-thumbnail" src="{{ asset('/uploads/'~app.user.getPicture() ) }}"alt="Profile Pic"/>
+                            {% endif %}
+
+
                         </div>
-                        <div class="about">
-                            <h5>About</h5>
-                            <p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
-                        </div>
+                        {{ form_widget(form.picture, {'attr':{'class': 'w-75 mt-3 mb-3 '}}) }}
                         <div class="row gutters">
                                 <a href="{{ path('updatepassword') }}">Modifier le mot de passe </a>
                         </div>
@@ -95,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-info "> <a href="{{ path('prog') }}"> Retour</a></button>
+                    <button type="button" class="btn bg-transparent row-cols-6"> <a href="{{ path('prog') }}"> Retour</a></button>
                     {{ form_end(form) }}
                 </div>
             </div>

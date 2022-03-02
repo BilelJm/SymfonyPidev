@@ -20,7 +20,7 @@ class ProfileType extends AbstractType
             ->add('firstName')
             ->add('lastName')
             ->add('picture', FileType::class, [
-                'label' => 'Brochure (PDF file)',
+
                 'required' => false,
                 'data_class' => null
             ])
