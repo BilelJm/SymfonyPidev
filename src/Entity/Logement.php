@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=LogementRepository::class)
@@ -22,12 +22,13 @@ class Logement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Groups("post:read")
      * @Assert\NotBlank(
      *     message="titre de logement est obligatoire"
      * )
@@ -37,7 +38,7 @@ class Logement
 
     /**
      * @ORM\Column(type="text")
-     * 
+     * @Groups("post:read")
      * @Assert\NotBlank(
      *     message="description de logement est obligatoire"
      * )
@@ -46,7 +47,7 @@ class Logement
 
     /**
      * @ORM\Column(type="text")
-     * 
+     * @Groups("post:read")
      * @Assert\NotBlank(
      *     message="addresse de logement est obligatoire"
      * )
@@ -57,7 +58,7 @@ class Logement
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="logements")
      * @ORM\JoinColumn(nullable=false)
-     * 
+     * @Groups("post:read")
      */
     private $hote;
 
@@ -69,6 +70,7 @@ class Logement
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
      * @var string
+     *
      */
     private $filename;
 
@@ -218,7 +220,7 @@ class Logement
      * @param null|string $filename
      * @return Logement
      */
-    public function setFilename(?string $filename): Logement
+    public function setFilename(?string $filename): ?Logement
     {
         $this->filename = $filename;
         return $this;
@@ -250,7 +252,7 @@ class Logement
      * @param null|string $qrFileName
      * @return Logement
      */
-    public function setQrFileName(string $qrFileName): Logement
+    public function setQrFileName(?string $qrFileName): Logement
     {
         $this->qrFileName = $qrFileName;
         return $this;
