@@ -9,21 +9,14 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LogementType extends AbstractType
+class LogementActivationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre')
-            ->add('description')
-            ->add('addresse')
-            ->add('equipements')
-            ->add('imageFile',FileType::class,[
-                'required' => false
-                ])
 
             ->add('isActive', ChoiceType::class, [
-                'label' => 'Activation',
+                'label' => false,
                 'choices' => [
                     'Activer' => true,
                     'Desactiver' => false
@@ -39,4 +32,5 @@ class LogementType extends AbstractType
             'data_class' => Logement::class,
         ]);
     }
+
 }

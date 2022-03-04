@@ -12,13 +12,88 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 /**
  * @Route("hote/equipement")
  */
 class EquipementHoteController extends AbstractController
 {
+    /**
+     * @Route("/EquipementAllJSON",name="EquipementAllJSON")
+     */
 
+    public function EquipementAllJSON(NormalizerInterface  $Normalizer)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository(Equipement::class);
+        $equipements = $repository->findAll();
+        $jsonContent = $Normalizer->normalize($equipements, 'json', ['groups' => 'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/EquipementByIdJSON/{id}",name="EquipementByIdJSON")
+     */
+
+    public function EquipementByIdJSON(NormalizerInterface  $Normalizer,$id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository(Equipement::class);
+        $equipements = $repository->find($id);
+        $jsonContent = $Normalizer->normalize($equipements, 'json', ['groups' => 'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+    /**
+     * @Route("/json_addequpement/{nom}",name="json_addequpement")
+     */
+    public function json_addequpement(NormalizerInterface $Normalizer,$nom)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $equipement = new Equipement();
+        $equipement->setNom($nom) ;
+        $em->persist($equipement);
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($equipement, 'json', ['groups' => 'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/json_updateequipement/{id}/{nom}",name="json_updateequipement")
+     */
+    public function json_updateequipement(NormalizerInterface $Normalizer,EquipementRepository $repository,$id,$nom)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $equipement = $repository->find($id);
+        $equipement->setNom($nom);
+        $em->persist($equipement);
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($equipement, 'json', ['groups' => 'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/json_deleteequipement/{id}", name="json_deleteequipement")
+     */
+
+    public  function json_deleteequipement($id,EquipementRepository $repository,NormalizerInterface $Normalizer){
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $equipement = $em->getRepository(Equipement::class)->find($id);
+
+        if($equipement!=null){
+            $em->remove($equipement);
+            $em->flush();
+
+            $serielize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serielize->normalize("equipement supprimé avec success");
+            return new Response(json_encode($formatted));
+        }
+        return new Response("id equipement invalide");
+    }
     /**
      * @Route("/", name="equipement_index", methods={"GET"})
      */
