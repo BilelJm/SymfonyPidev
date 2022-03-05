@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use League\OAuth2\Client\Provider\GithubResourceOwner;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +20,40 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findOrCreateFromGithubOauth(GithubResourceOwner $owner): User
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+        /** @var User|null $user */
+        $user= $this->createQueryBuilder('u')
+            ->where('u.githubId= :githubId')
+            ->orWhere('u.email= :email')
+            ->setParameters([
+                'email' =>$owner->getEmail(),
+                'githubId' =>$owner->getId()
+            ])
             ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+            ->getOneOrNullResult();
+        if ($user){
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            if($user->getGithubId() === null){
+                $user->setGithubId($owner->getId());
+                $this->getEntityManager()->flush();
+            }
+            return $user;
+        }
+        $user =(new User())
+            ->setUsername($owner->getNickname())
+            ->setFirstName($owner->getName())
+            ->setLastName($owner->getName())
+            ->setGithubId($owner->getId())
+            ->setEmail($owner->getEmail());
+
+        $em= $this->getEntityManager();
+        $em->persist($user);
+        $em->flush();
+
+
+        return $user;
     }
-    */
+
+
 }

@@ -41,6 +41,7 @@ security:
             guard:
                 authenticators:
                     - App\Security\UserAuthAuthenticator
+                    - App\Security\GithubAuthenticator
                 entry_point: App\Security\UserAuthAuthenticator
             logout:
                 path: app_logout

@@ -84,6 +84,11 @@ class User implements UserInterface
      */
     private $reset_token;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $githubId;
+
 
 
 
@@ -227,6 +232,18 @@ class User implements UserInterface
     public function setResetToken(?string $reset_token): self
     {
         $this->reset_token = $reset_token;
+
+        return $this;
+    }
+
+    public function getGithubId(): ?string
+    {
+        return $this->githubId;
+    }
+
+    public function setGithubId(?string $githubId): self
+    {
+        $this->githubId = $githubId;
 
         return $this;
     }
