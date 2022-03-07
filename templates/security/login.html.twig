@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <title>Corona Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset ('back-office/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
-    <link rel="stylesheet" href={{ asset ('back-office/assets/vendors/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet" href="{{ asset ('back-office/assets/vendors/css/vendor.bundle.base.css')}}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -28,9 +28,10 @@
                         <h3 class="card-title text-left mb-3">Login</h3>
 
                         {% block body %}
+
                             <form  method="post">
-                                {% if error %}
-                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% if hasError %}
+                                    <div class="alert alert-danger">Une erreur est survenue , le nom d'utilisateur ou le mot de passe et incorrect  </div>
                                 {% endif %}
 
                                 {% if app.user %}
