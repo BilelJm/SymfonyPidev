@@ -1,0 +1,64 @@
+{% extends 'back_annonce.html.twig' %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+
+
+    <h1>Annonce </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Disponible</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Promotion</th>
+                <th>Image</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for annonce in annonces %}
+
+            <tr>
+                <td>{{ annonce.id }}</td>
+                <td>{{ annonce.titre }}</td>
+                <td>{{ annonce.prix }}</td>
+                <td>{{ annonce.disponible ? 'Yes' : 'No' }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>{{ annonce.type }}</td>
+                <td>{{ annonce.date ? annonce.date|date('Y-m-d') : '' }}</td>
+                <td>{{ annonce.promotion}}</td>
+                <td>
+                    {% for image in annonce.getImages() %}
+                        <img src="{{ asset('uploads/')~image.getName() }}">
+                    {% endfor %}
+                </td>
+
+
+                <td>
+                    <a class="btn btn-inverse-primary mt-2" href="{{ path('annonce_show', {'id': annonce.id}) }}">Afficher</a>
+                </td>
+                <td>
+                    <a class="btn btn-inverse-primary mt-2" href="{{ path('annonce_edit', {'id': annonce.id}) }}"> Editer</a>
+                </td>
+                <td>
+                    {{ include('annonce/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('annonce_new') }}"> <<< Create new</a>
+{% endblock %}

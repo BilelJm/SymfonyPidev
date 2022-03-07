@@ -1,0 +1,77 @@
+{% extends 'back_annonce.html.twig' %}
+
+{% block title %}Nouvelle Annonce{% endblock %}
+
+{% block body %}
+
+
+    <h1>Nouvelle Annonce</h1>
+    <div class="card col-lg-15 mx-auto">
+        <div class="card-body px-50 py-50">
+
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+            <div class="form-group">
+                {{ form_label(form.titre) }}
+                {{ form_errors(form.titre)  }}
+                {{ form_widget(form.titre , {'attr':{'class':'form-control p_input'}}) }}
+
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.date) }}
+                {{ form_errors(form.date)  }}
+                {{ form_widget(form.date, {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prix) }}
+                {{ form_errors(form.prix)  }}
+                {{ form_widget(form.prix , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.disponible) }}
+                {{ form_errors(form.disponible)  }}
+                {{ form_widget(form.disponible , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.description) }}
+                {{ form_errors(form.description)  }}
+                {{ form_widget(form.description , {'attr':{'class':'form-control p_input'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.type) }}
+                {{ form_errors(form.type)  }}
+                {{ form_widget(form.type , {'attr':{'class':'form-control p_input'}}) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_label(form.promotion) }}
+                {{ form_errors(form.promotion)  }}
+                {{ form_widget(form.promotion , {'attr':{'class':'form-control p_input'}}) }}
+
+            </div>
+           <div class="form-group">
+            {{ form_label(form.images) }}
+            {{ form_errors(form.images)  }}
+            {{ form_widget(form.images , {'attr':{'class':'form-control p_input'}}) }}
+
+        </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+    <!-- content-wrapper ends -->
+
+    <!-- row ends -->
+
+    <!-- page-body-wrapper ends -->
+
+
+
+    <a class= "btn btn-success" href="{{ path('annonce_index') }}">Retourner a la liste</a>
+
+{% endblock %}

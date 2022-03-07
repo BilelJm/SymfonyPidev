@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{@fullcalendar/core, @fullcalendar/daygrid, @fullcalendar/interaction, @fullcalendar/timegrid, all, fullcalendar, jquery-3.3.1, jquery-3.4.0, line-awesome, moment}" />
+  </component>
+</project>

@@ -1,0 +1,34 @@
+{% extends 'back_annonce.html.twig' %}
+
+{% block title %}Promotion{% endblock %}
+
+{% block body %}
+    <h1>Promotion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ promotion.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ promotion.dateDebut ? promotion.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ promotion.dateFin ? promotion.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Taux</th>
+                <td>{{ promotion.taux }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_promotion_index') }}">back to list</a>
+
+    <a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}">edit</a>
+
+    {{ include('promotion/_delete_form.html.twig') }}
+{% endblock %}
