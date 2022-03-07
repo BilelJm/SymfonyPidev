@@ -38,6 +38,7 @@ class ProgController extends AbstractController
         return $this->render('annonce/annonces.html.twig', [
             'annonces' => $annonces,
 
+
         ]);
     }
 

@@ -1,0 +1,19 @@
+{% extends 'back_annonce.html.twig' %}
+
+{% block title %}Edit Annonce{% endblock %}
+
+{% block body %}
+    <h1>Edit Annonce</h1>
+
+
+   {{ include('annonce/_form.html.twig', { 'button_label' : 'Valider la modification'}) }}
+
+    <td>
+
+        <a class= "btn btn-inverse-success" href="{{ path('annonce_index') }}">Retourner a la liste</a>
+
+    </td>
+    <td>
+        {{ include('annonce/_delete_form.html.twig') }}
+    </td>
+{% endblock %}
