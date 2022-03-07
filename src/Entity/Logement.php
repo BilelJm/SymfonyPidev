@@ -62,12 +62,20 @@ class Logement
      */
     private $equipements;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="logement")
+     */
+    private $logements;
+
+
   
 
     public function __construct()
     {
       
         $this->equipements = new ArrayCollection();
+        $this->logements = new ArrayCollection();
+
     }
 
 
@@ -144,6 +152,36 @@ class Logement
     public function removeEquipement(Equipement $equipement): self
     {
         $this->equipements->removeElement($equipement);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Annonce>
+     */
+    public function getLogements(): Collection
+    {
+        return $this->logements;
+    }
+
+    public function addLogement(Annonce $logement): self
+    {
+        if (!$this->logements->contains($logement)) {
+            $this->logements[] = $logement;
+            $logement->setLogement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogement(Annonce $logement): self
+    {
+        if ($this->logements->removeElement($logement)) {
+            // set the owning side to null (unless already changed)
+            if ($logement->getLogement() === $this) {
+                $logement->setLogement(null);
+            }
+        }
 
         return $this;
     }
