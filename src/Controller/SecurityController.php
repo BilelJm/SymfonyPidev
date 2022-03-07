@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/register", name="security_register ")
+     * @Route("/register", name="security_register")
      */
     public function Register(Request $request , UserPasswordEncoderInterface $encoder): Response
     {
@@ -29,6 +29,9 @@ class SecurityController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->addFlash('success',
+            "Votre compte a bien été créé ! Vouz pouvez maintenant vous connecter ! ");
+            return $this->redirectToRoute("app_login");
 
         }
         return $this->render('security/register.html.twig', [

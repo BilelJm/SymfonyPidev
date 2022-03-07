@@ -58,15 +58,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="6", minMessage="Votre mot de passe doit etre minimum 8 caracteres")
-     * @Assert\EqualTo(propertyPath ="confirm_pwd" , message="Le mot de passe n'est pas identique")
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit etre minimum 8 caracteres")
      */
     private $password;
 
-    /**
-     * @Assert\EqualTo(propertyPath ="password", message="Le mot de passe n'est pas identique")
-     */
-    public $confirm_pwd;
 
     /**
      * @ORM\OneToMany(targetEntity=Logement::class, mappedBy="hote")
