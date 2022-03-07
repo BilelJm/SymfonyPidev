@@ -1,0 +1,146 @@
+
+{% extends 'base-frontlistannann.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+{% block body %}
+
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-1 temp_col"></div>
+			<div class="col-lg-11">
+
+
+
+						<div class="offer_reviews">
+
+							<div class="offer_reviews_content">
+
+
+							</div>
+
+
+
+							<div class="offer_reviews">
+								<div class="offer_reviews_content">
+
+								</div>
+
+							<ul>
+
+							</ul>
+
+						<li>
+
+							<ul>
+
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-12">
+				<!-- Offers Grid -->
+
+				<div class="offers_grid">
+					<form class="form-inline">
+						<input class="form-control mr-sm-10" type="search" placeholder="Chercher Annonce" aria-label="Search">
+						<button class="btn btn-primary my-2 my-sm-0" type="submit">Chercher</button>
+					</form>
+				</div>
+					<!-- Offers Item -->
+					{% for annonce in annonces %}
+					<div class="offers_item rating_4">
+						<div class="row">
+							<div class="col-lg-1 temp_col"></div>
+							<div class="col-lg-3 col-1680-4">
+								<div class="offers_image_container">
+									<!-- Image by https://unsplash.com/@kensuarez -->
+									{% for image in annonce.getImages() %}
+									<div class="offers_image_background" style="background-image:url({{ asset('uploads/')~image.getName() }})"></div>
+									{%  endfor %}
+									<div class="offer_name"><a href="{{ path('annonce_comment', {'id': annonce.id}) }}">{{ annonce.titre }}></a> </div>
+								</div>
+							</div>
+							<div class="col-lg-8">
+								<div class="offers_content">
+									<div class="offers_price">{{ annonce.prix }}<span>DT</span></div>
+
+
+									<!doctype html>
+									<html lang="en">
+									<head>
+										<meta charset="UTF-8">
+										<meta name="viewport"
+											  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+										<meta http-equiv="X-UA-Compatible" content="ie=edge">
+										<title>Rating System</title>
+										<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+									</head>
+
+									<body>
+									</body>
+									</html>
+
+									<p class="offers_text">{{ annonce.type }} </p>
+
+									<div class="offers_icons">
+										<ul class="offers_icons_list">
+											<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
+											<li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
+											<li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
+											<li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
+										</ul>
+									</div>
+									<div class="button book_button"><a href="#">Reserver<span></span><span></span><span></span></a></div>
+									<div class="offer_reviews">
+										<div class="offer_reviews_content">
+
+										</div>
+										<div class="offer_reviews_rating text-center"> {{ annonce.disponible }}</div>
+
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+
+					<!-- Offers Item -->
+
+					<!-- Offers Item -->
+
+
+
+					<!-- Offers Item -->
+
+
+					</script>
+									</body>
+									</html>
+
+
+
+
+
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+{% endblock %}
+

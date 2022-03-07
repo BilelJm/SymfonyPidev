@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.10.2/main.min.css" integrity="sha256-lQnxfLYgySmY6nHM7LkVqcS2RdJvFUV2p6FHg04SZN4=" crossorigin="anonymous">
+        {% block stylesheets %}
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.10.2/main.min.js" integrity="sha256-YK3r7IQuHVY5YtEUbGuFMcwtIYCRtRKpZyMej0emzBc=" crossorigin="anonymous"></script>
+        {% block javascripts %}
+
+        {% endblock %}
+    </body>
+</html>

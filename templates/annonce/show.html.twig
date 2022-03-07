@@ -1,0 +1,61 @@
+{% extends 'back_annonce.html.twig' %}
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+    <h1>Annonce</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ annonce.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ annonce.titre }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ annonce.prix }}</td>
+        </tr>
+        <tr>
+            <th>Disponible</th>
+            <td>{{ annonce.disponible ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ annonce.description }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ annonce.type }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ annonce.date ? annonce.date|date('Y-m-d') : '' }}</td>
+        </tr>
+
+        <tr>
+            <th>Images</th>
+            <td>
+                {% for image in annonce.getImages() %}
+                    <img src="{{ asset('uploads/')~image.getName() }}">
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <td>
+
+        <a class= "btn btn-inverse-warning" href="{{ path('annonce_index') }}">Retourner a la liste</a>
+
+    </td>
+
+    <td>
+        <a class="btn btn-inverse-primary mt-2" href="{{ path('annonce_edit', {'id': annonce.id}) }}"> Editer</a>
+    </td>
+
+    {{ include('annonce/_delete_form.html.twig') }}
+
+{% endblock %}

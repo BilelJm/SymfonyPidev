@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
 	<title>Wiن?</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Travelix Project">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/styles/bootstrap4/bootstrap.min.css') }}">
 	<link href="{{ asset('front-office/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
@@ -13,6 +10,17 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/plugins/OwlCarousel2-2.2.1/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/styles/main_styles.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/styles/responsive.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/styles/bootstrap4/bootstrap.min.css') }}">
+	<link href="{{ asset('front-office/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/styles/offers_styles.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('front-office/styles/offers_responsive.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('front-office/styles/bootstrap4/bootstrap.min.css')}}">
+	<link href="{{asset('front-office/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{asset('front-office/plugins/OwlCarousel2-2.2.1/owl.carousel.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('public/front-office/plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('public/front-office/plugins/OwlCarousel2-2.2.1/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('public/front-office/styles/about_styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('public/front-office/styles/about_responsive.css')}}">
 	<link rel="shortcut icon" href="{{ asset('back-office/assets/images/icone.png') }}" />
 </head>
 
@@ -31,16 +39,7 @@
 				<div class="row">
 					<div class="col d-flex flex-row">
 
-						<div class="social">
-							<ul class="social_list">
-								<li class="social_list_item"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
+
 						<div class="user_box ml-auto">
 							<div class="user_box_login user_box_link"><a href="#">Rejoindre Notre Equipe</a></div>
 
@@ -110,45 +109,13 @@
 
 			<div class="owl-carousel owl-theme home_slider">
 
-				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url({{asset('front-office/images/contact.jpg')}})" ></div>
-
-					<div class="home_slider_content text-center">
-						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-
-							<h1></h1>
-							<h1>Contactez-nous</h1>
-
-
-
-						</div>
-					</div>
-				</div>
-
-
-
-				<!-- Slider Item -->
-				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url({{asset('front-office/images/tun3.jpg')}})" ></div>
+					<div class="home_slider_background" style="background-image:url({{asset('front-office/images/prog.jpg')}})"></div>
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h1></h1>
-							<h1>Pas Une Destination</h1>
-
-						</div>
-					</div>
-				</div>
-				<!-- Slider Item -->
-				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url({{asset('front-office/images/tun1.jpg')}})"></div>
-
-					<div class="home_slider_content text-center">
-						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-							<h1>Voyager </h1>
-							<h1>Pour Vivre</h1>
-
+							<h1>A propos de nous</h1>
 						</div>
 					</div>
 				</div>
@@ -191,48 +158,38 @@
 				</svg>
 			</div>
 
-			<!-- Home Slider Dots -->
-
-			<div class="home_slider_dots">
-				<ul id="home_slider_custom_dots" class="home_slider_custom_dots">
-					<li class="home_slider_custom_dot active"><div></div>01.</li>
-					<li class="home_slider_custom_dot"><div></div>02.</li>
-					<li class="home_slider_custom_dot"><div></div>03.</li>
-				</ul>
-			</div>
-
 		</div>
 
 	</div>
+<br> <br>
+	<div class="container">
 
-	<br>
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="intro_image"><img src="{{ asset('../public/front-office/images/about.jpg') }}" alt=""></div>
+			</div>
 
-	<div class="contact">
-		<div class="contact_background" style="background-image:url({{ asset('front-office/images/contact.png')}})"></div>
+			<div class="col-lg-5">
+				<div class="intro_content">
+				<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<h1> Wiن ?</h1>
+					<br>
+					<div class="intro_title">Pas une destination</div>
+					<p class="intro_text"> Wiن ? est un site web réalisé en 2022. Il vous offre les meilleurs logements ainsi que les meilleures expériences à vivre grâce à ses hôtes expérimentés. Avec Wiن ? vous ne prenez que des souvenirs,</p>
+						</div>
+				<div class="button intro_button"><div class="button_bcg"></div><a href="{{ path('prog') }}">
+						explorer maintenant<span></span><span></span><span></span></a></div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5">
-					<div class="contact_image">
-
-					</div>
-				</div>
-				<div class="col-lg-7">
-					<div class="contact_form_container">
-						<div class="contact_title">ENTRER EN CONTACT</div>
-						<form action="#" id="contact_form" class="contact_form">
-							<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Nom" required="required" data-error="Name est obilgatoire.">
-							<input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email est obligatoire.">
-							<input type="text" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Sujet" required="required" data-error="sujet est obligatoire.">
-							<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="S'il vous plaît, écrivez-nous un message."></textarea>
-							<button type="submit" id="form_submit_button" class="form_submit_button button">Envoyer message<span></span><span></span><span></span></button>
-						</form>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
 
+<br> <br>
 	<!-- Footer -->
 
 	<footer class="footer">
@@ -250,11 +207,7 @@
 								<div><h1>Wiن?</h1></div>
 							</div>
 							<p class="footer_about_text">Ne perdez plus votre temps à chercher dans plusieurs sites, Wiن? vous offre les meilleurs logements ainsi que les meilleurs expériences à vivre. Ne ratez pas l'occasion, réservez maintenant !
-							<li class="footer_social_item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fa fa-behance"></i></a></li>
+
 							</ul>
 						</div>
 					</div>
@@ -345,6 +298,25 @@
 <script src="{{ asset('front-office/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
 <script src="{{ asset('front-office/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('front-office/js/custom.js') }}"></script>
+<script src="{{ asset('front-office/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('front-office/styles/bootstrap4/popper.js') }}"></script>
+<script src="{{ asset('front-office/styles/bootstrap4/bootstrap.min.js') }}"></script>
+<script src="{{ asset('front-office/plugins/Isotope/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('front-office/plugins/easing/easing.js') }}"></script>
+<script src="{{ asset('front-office/plugins/parallax-js-master/parallax.min.js') }}"></script>
+<script src="{{ asset('front-office/js/offers_custom.js') }}"></script>
+<script src="{{ asset('public/front-office/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('public/front-office/styles/bootstrap4/popper.js') }}"></script>
+<script src="{{ asset('public/front-office/styles/bootstrap4/bootstrap.min.js')}}"></script>
+<script src="{{ asset('public/front-office/plugins/greensock/TweenMax.min.js')}}"></script>
+<script src="{{ asset('public/front-office/plugins/greensock/TimelineMax.min.js')}}"></script>
+<script src="{{ asset('front-office/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+<script src="{{ asset('front-office/plugins/greensock/animation.gsap.min.js')}}"></script>
+<script src="{{ asset('front-office/plugins/greensock/ScrollToPlugin.min.js')}}"></script>
+<script src="{{ asset('front-office/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
+<script src="{{ asset('front-office/plugins/easing/easing.js')}}"></script>
+<script src="{{ asset('front-office/plugins/parallax-js-master/parallax.min.js')}}"></script>
+<script src="{{ asset('front-office/js/about_custom.js')}}"></script>
 
 </body>
 
